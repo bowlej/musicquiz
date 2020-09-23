@@ -62,7 +62,7 @@ def read_scores(file):
 def musicQuiz(user):
     points = 3
     print("Can you guess the name of the song with just the intials and the band name?, you will have 3 trys")
-    print("The initals of the song are", song_initails, "the band name is", random_band, )
+    print("The initals of the song are", song_initails, "the band name is", random_band)
     clue = input("Would you like a clue?, if so type clue, if not type no ")
     if (clue == 'clue'):
         print("the year the song was released was", random_year)
