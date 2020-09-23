@@ -19,7 +19,7 @@ def login(usr):
             return False
     #If username not found add that and password to the users file
     else:
-        print("Hello, {0} Thanks for registering and enjoy the quiz".format(uN))
+        print("Hello, {0} ! Thanks for registering and enjoy the quiz".format(uN))
         #Add new username with password
         usr[uN] = pW
         #Add the new username with password to the users file
