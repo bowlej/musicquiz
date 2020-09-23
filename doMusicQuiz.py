@@ -1,9 +1,8 @@
 import functions
-import json
 
-def login(usr):
+def doMusicQuiz(usr):
+    #Welcome message
     print("Welcome to the music quiz, please login if you have already registered, if not add a user and password and those details will be registered for you to use next time")
-
     #Asking for Name
     uN = input("Name: ")
     #Asking for Password
@@ -14,7 +13,7 @@ def login(usr):
         if pW == usr[uN]:
             print("Welcome back {0}".format(uN))
         else:
-            print("Incorrect password.")
+            print("Sorry its seems that you are using an incorrect password or if you are a new user that username is already taken so please pick another")
             #Try login again
             return False
     #If username not found add that and password to the users file
@@ -28,17 +27,12 @@ def login(usr):
     functions.musicQuiz(uN)
     return True
 
-def readUsers():
-    try:
-        with open("users.json", "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
-
 #Read users from the users file
-users = readUsers()
+users = functions.readUsers()
 
 #Check if entered username and password are already in the users.json file
-success = login(users)
+success = doMusicQuiz(users)
 while not success:
-    success = login(users)
+    success = doMusicQuiz(users)
+
+#import functions

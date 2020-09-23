@@ -1,6 +1,7 @@
 import random
 import json
 
+
 # Opening the files i need to read, using 'with open' this will close the files at the end of the quiz
 # Songs
 with open('Songs.txt', 'r') as songsfilecontents:
@@ -23,7 +24,7 @@ random_band = list_of_bands[random_number]
 # Getting the matching year of the song
 random_year = list_of_years[random_number]
 # Getting the intials of the random song
-song_initails = "".join(item[0].upper() for item in random_song.split())
+song_initials = "".join(item[0].upper() for item in random_song.split())
 
 
 # Functions
@@ -62,9 +63,9 @@ def read_scores(file):
 def musicQuiz(user):
     points = 3
     print("Can you guess the name of the song with just the intials and the band name?, you will have 3 trys")
-    print("The initals of the song are", song_initails, "the band name is", random_band)
-    clue = input("Would you like a clue?, if so type clue, if not type no ")
-    if (clue == 'clue'):
+    print("The initals of the song are", song_initials, "the band name is", random_band)
+    clue = input("Would you like a clue?, if so type yes, if not type no ")
+    if (clue == 'yes'):
         print("the year the song was released was", random_year)
     # Adding an input for the user to guess the song
     guess_the_song = input("Guess the name of the song! ")
@@ -81,7 +82,14 @@ def musicQuiz(user):
         wrong_answer = (guess_the_song != random_song)
     # Getting it wrong
     if wrong_answer:
-        print("Thats wrong you clown!, you have had your 3 trys now go away!")
+        print("Sorry that's incorrect, you have had your 3 trys now so the quiz is over for you {0}".format(user))
+        #Checking if the player would like to try again
+        playagainafterfail = input("Would you like to try the same question again or quit the quiz? Type same for the same question again, or no to quit ")
+        if (playagainafterfail == 'same'):
+            #Ask same question again, the random_band already used should still be in memory for this session when running this function again
+            musicQuiz(user)
+        else:
+            print("Thanks for playing and goodbye!")
     # Getting it right
     else:
         # Getting the final score
@@ -91,3 +99,4 @@ def musicQuiz(user):
         print("Ohh look at you knowing the right band!, well done!")
         print("You scored {0} point/s".format(final_score))
         read_scores('scores.txt')
+        print("Thanks for playing and goodbye!")
