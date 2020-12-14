@@ -14,7 +14,7 @@ with open('yearofsong.txt', 'r') as yearfilecontents:
     list_of_years = yearfilecontents.readlines()
 
 # Creating a random number to use to get a song and band
-random_number = random.randint(0, 7)
+random_number = random.randint(0, 19)
 # Getting a random song
 random_song = list_of_songs[random_number]
 # Removing any whitespace after the random song
